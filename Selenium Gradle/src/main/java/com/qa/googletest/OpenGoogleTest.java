@@ -43,10 +43,7 @@ public class OpenGoogleTest {
 
         // Maximize window
         driver.manage().window().maximize();
-
-
     }
-
     /**
      * Open Google page, search and quit
      */
@@ -61,27 +58,16 @@ public class OpenGoogleTest {
         // Send phrase in search input
         driver.findElement(By.name("q")).sendKeys("Automation testing");
         driver.findElement(By.name("q")).submit();
-
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("scrollBy(0, 5000)");
-
-
-
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(@href,'https://www.qasymphony.com')]//span[contains(@class,'S3Uucc')]"))));
-        System.out.println("test");
-
-       // driver.findElement(By.xpath("//a[contains(@href,'https://www.qasymphony.com')]")).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.partialLinkText("https://www.qasymphony.com"))));
+        driver.findElement(By.partialLinkText("https://www.qasymphony.com")).click();
     }
-
-    /**
-     * After method, quit driver
+    /* After method, quit driver
      */
-   /** @After
+   @After
     public void tearDown() {
 
         // Quit from Driver. close() just close window,
         // quit() - close all window an driver
         driver.quit();
-    }*/
-
+    }
 }
